@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
+import { fetchData, postData } from '../redux/actions';
 
 const FirstBlock = () => {
+    const text = useSelector((state) => state.initialText);
     const [value, setValue] = useState("")
     const dispatch = useDispatch();
-    const text = useSelector((state) => state.initialText);
+
+    useEffect(() => {
+        getData()
+    }, [])
+
+    const getData = () => {
+      dispatch(fetchData())
+    }
 
     const handleChange = (e) => {
         setValue(e.target.value)
     };
 
     const handleAddText = () => {
-        dispatch({ type: 'UPDATE_TEXT', payload: value });
+        dispatch(postData(value))
         setValue("")
     }
+
+
 
     return (
         <div className='text-wrapper'>

@@ -1,20 +1,29 @@
-import React from 'react';
-import {useDispatch, useSelector} from "react-redux"
+import React, {useEffect} from 'react';
+import { useDispatch, useSelector } from "react-redux"
+import { fetchData, postData } from '../redux/actions';
 
 const SecondBlock = () => {
-    const dispatch = useDispatch();
     const text = useSelector((state) => state.initialText);
+    const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    dispatch({ type: 'UPDATE_TEXT', payload: e.target.value });
-  };
+    useEffect(() => {
+        getData()
+    }, [])
 
-  return (
-    <div className='text-wrapper'>
-      <h2  className='title'>{text}</h2>
-      <input type="text" value={text} onChange={handleChange} />
-    </div>
-  );
+    const getData = () => {
+        dispatch(fetchData())
+    }
+
+    const handleChange = (e) => {
+        dispatch(postData(e.target.value))
+    };
+
+    return (
+        <div className='text-wrapper'>
+            <h2 className='title'>{text}</h2>
+            <input type="text" value={text} onChange={handleChange} />
+        </div>
+    );
 };
 
 export default SecondBlock;

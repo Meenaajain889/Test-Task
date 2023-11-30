@@ -1,9 +1,11 @@
+const cors = require('cors')
 const express = require('express');
 const { storeValue, getValue } = require('./controller.js');
 const app = express();
 const port = 4000;
 const filePath = 'data.json';
 app.use(express.json());
+app.use(cors())
 app.post('/store', (req, res) => {
   console.log(req.body)
   const { value } = req.body;
