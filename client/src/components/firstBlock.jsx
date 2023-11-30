@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux"
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux"
 
 const FirstBlock = () => {
-    const [value, setValue] = useState("Hello")
+    const [value, setValue] = useState("")
     const dispatch = useDispatch();
     const text = useSelector((state) => state.initialText);
 
-
     const handleChange = (e) => {
-     setValue(e.target.value)
+        setValue(e.target.value)
     };
 
     const handleAddText = () => {
@@ -17,10 +16,10 @@ const FirstBlock = () => {
     }
 
     return (
-        <div>
-            <h2>{text}</h2>
+        <div className='text-wrapper'>
+            <h2 className='title'>{text}</h2>
             <input type="text" value={value} onChange={handleChange} />
-            <button onClick={handleAddText}>Add Text</button>
+            <button disabled={value.length === 0 ? true : false} style={{ backgroundColor: value.length === 0 ? '#1111115c' : '#111' }} onClick={handleAddText}>Add Text</button>
         </div>
     );
 };

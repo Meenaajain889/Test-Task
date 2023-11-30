@@ -10,8 +10,8 @@ const SecondBlock = () => {
   };
 
   return (
-    <div>
-      <h2>{text}</h2>
+    <div className='text-wrapper'>
+      <h2  className='title'>{text}</h2>
       <input type="text" value={text} onChange={handleChange} />
     </div>
   );
