@@ -6,17 +6,18 @@ const FirstBlock = () => {
     const text = useSelector((state) => state.initialText);
     const [value, setValue] = useState("")
     const dispatch = useDispatch();
+    const length = value.length
 
     useEffect(() => {
         getData()
     }, [])
 
     const getData = () => {
-      dispatch(fetchData())
+        dispatch(fetchData())
     }
 
-    const handleChange = (e) => {
-        setValue(e.target.value)
+    const handleChange = (event) => {
+        setValue(event.target.value)
     };
 
     const handleAddText = () => {
@@ -30,7 +31,12 @@ const FirstBlock = () => {
         <div className='text-wrapper'>
             <h2 className='title'>{text}</h2>
             <input type="text" value={value} onChange={handleChange} />
-            <button disabled={value.length === 0 ? true : false} style={{ backgroundColor: value.length === 0 ? '#1111115c' : '#111' }} onClick={handleAddText}>Add Text</button>
+            <button
+                disabled={length === 0 ? true : false}
+                style={{ backgroundColor: length === 0 ? '#1111115c' : '#111' }}
+                onClick={handleAddText}>
+                Add Text
+            </button>
         </div>
     );
 };

@@ -4,8 +4,12 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'UPDATE_DATA':
+        case 'GET_DATA':
             return { ...state, initialText: action.payload };
+
+        case 'ADD_DATA':
+            return { ...state, initialText: action.payload };
+
         default:
             return state;
     }

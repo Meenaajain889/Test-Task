@@ -14,8 +14,8 @@ const SecondBlock = () => {
         dispatch(fetchData())
     }
 
-    const handleChange = (e) => {
-        dispatch(postData(e.target.value))
+    const handleChange = (event) => {
+        dispatch(postData(event.target.value))
     };
 
     return (

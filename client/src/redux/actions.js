@@ -2,9 +2,9 @@ import axios from 'axios';
 
 export const fetchData = () => {
     return async (dispatch) => {
-        const response = await axios.get('http://localhost:4000/get');
+        const response = await axios.get('http://localhost:4000');
         dispatch({
-            type: "UPDATE_DATA",
+            type: "GET_DATA",
             payload: response.data.value,
         });
     }
@@ -12,9 +12,9 @@ export const fetchData = () => {
 
 export const postData = (value) => {
     return async (dispatch) => {
-        await axios.post('http://localhost:4000/store', {value});
+        await axios.post('http://localhost:4000', {value});
         dispatch({
-            type: "UPDATE_DATA",
+            type: "ADD_DATA",
             payload: value,
         });
     }
