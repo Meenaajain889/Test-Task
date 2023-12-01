@@ -112,3 +112,30 @@ body {
   align-items: center;
   margin-top: 100px;
 }
+
+
+.tab-container {
+  display: flex;
+  justify-content: center;
+}
+
+.tab-link {
+  width:600px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #000; 
+  border: 1px solid #ccc; 
+  border-radius: 5px 5px 0 0; 
+  background-color: #f0f0f0; 
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.tab-link.active {
+  background-color: #fff; 
+  border-bottom: 1px solid #fff; 
+}
+
+.tab-link {
+  transition: background-color 0.3s, border-bottom 0.3s;
+}

@@ -8,7 +8,6 @@ import "./App.css"
 
 const App = () => {
   const [active, setActive] = useState(0)
-
   useEffect(() => {
     const currentPath = window.location.pathname;
     if (currentPath === '/') {
@@ -22,23 +21,32 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <div className="test-box">
-          <nav className='nav'>
-            <ul>
-            <li className={active === 0 ? 'active' : ''} onClick={() => setActive(0)}>
-                <Link to="/">First Block</Link>
-              </li>
-              <li className={active === 1 ? 'active' : ''} onClick={() => setActive(1)}>
-                <Link to="/second">Second Block</Link>
-              </li>
-            </ul>
-          </nav>
+      
+            <div className="tab-container">
+              <Link
+                to="/"
+                className={`tab-link ${active === 0 ? 'active' : ''}`}
+                onClick={() => setActive(0)}
+              >
+                First Block
+              </Link>
+
+              <Link
+                to="/second"
+                className={`tab-link ${active === 1 ? 'active' : ''}`}
+                onClick={() => setActive(1)}
+              >
+                Second Block
+              </Link>
+            </div>
+          
           <Routes>
-            <Route exact path="/" element={<FirstBlock />} />
-            <Route exact path="/second" element={<SecondBlock />} />
+            <Route path="/" element={<FirstBlock />} />
+            <Route path="/second" element={<SecondBlock />} />
           </Routes>
         </div>
       </BrowserRouter>
-    </Provider>
+    </Provider >
   );
 };
 
